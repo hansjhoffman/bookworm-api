@@ -32,7 +32,7 @@ defmodule Bookworm.BooksTest do
     end
 
     test "list_books/0 returns all books" do
-      book = book_fixture()
+      {:ok, book} = Books.book(1)
       assert Books.list_books() == [book]
     end
 

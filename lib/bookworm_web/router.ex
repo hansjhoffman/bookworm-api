@@ -10,4 +10,12 @@ defmodule BookwormWeb.Router do
 
     resources "/books", BookController, only: [:index, :show]
   end
+
+  forward "/graphql", Absinthe.Plug, schema: BookwormWeb.Schema
+
+  # scope "/" do
+  #   pipe_through :api
+  #
+  #   forward "/graphql", Absinthe.Plug, schema: BookwormWeb.Schema
+  # end
 end

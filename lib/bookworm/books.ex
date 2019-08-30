@@ -101,4 +101,23 @@ defmodule Bookworm.Books do
   def change_book(%Book{} = book) do
     Book.changeset(book, %{})
   end
+
+  @doc """
+  Gets a single book.
+
+  ## Examples
+
+      iex> book(123)
+      {:ok, %Book{}}
+
+      iex> book(456)
+      {:error, "Book with id 456 not found"}
+
+  """
+  def book(id) do
+    case Repo.get(Book, id) do
+      nil -> {:error, :not_found}
+      book -> {:ok, book}
+    end
+  end
 end
