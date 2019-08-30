@@ -10,7 +10,19 @@ defmodule Bookworm.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
+      releases: [
+        bookworm: [
+          include_executables_for: [:unix]
+        ]
+      ]
     ]
   end
 
@@ -45,7 +57,10 @@ defmodule Bookworm.MixProject do
       # GraphQL
       {:absinthe, "~> 1.4.2"},
       {:absinthe_plug, "~> 1.4"},
-      {:absinthe_phoenix, "~> 1.4"}
+      {:absinthe_phoenix, "~> 1.4"},
+
+      # Additional
+      {:excoveralls, "~> 0.11.2", only: :test}
     ]
   end
 

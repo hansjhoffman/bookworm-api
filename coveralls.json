@@ -1,0 +1,19 @@
+{
+  "skip_files": [
+    "lib/bookworm.ex",
+    "lib/bookworm/application.ex",
+    "lib/bookworm/release_tasks.ex",
+    "lib/bookworm/repo.ex",
+    "lib/bookworm_web.ex",
+    "lib/bookworm_web/channels/",
+    "lib/bookworm_web/controllers/fallback_controller",
+    "lib/bookworm_web/endpoint.ex",
+    "lib/bookworm_web/gettext.ex",
+    "lib/bookworm_web/resolvers/",
+    "lib/bookworm_web/schema.ex",
+    "lib/bookworm_web/schema/",
+    "lib/bookworm_web/views/changeset_view.ex",
+    "lib/bookworm_web/views/error_helpers.ex",
+    "test/support/"
+  ]
+}
