@@ -50,7 +50,7 @@ push: ## Push the Docker image
 	docker tag $(APP_NAME):$(DOCKER_IMAGE_TAG) $(GCR)/$(APP_NAME):$(DOCKER_IMAGE_TAG)
 	docker push $(GCR)/$(APP_NAME):$(DOCKER_IMAGE_TAG)
 
-# Development targets
+# Actions on targets
 # -------------------
 
 .PHONY: dependencies

@@ -27,6 +27,9 @@ run() {
   fi
 }
 
+header "Install dependencies"
+run make dependencies
+
 header "Get code coverage…"
 run make code-coverage
 
