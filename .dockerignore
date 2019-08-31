@@ -1,0 +1,9 @@
+_build/
+.git/
+deps/
+test/
+
+.*
+docker-compose.yml
+Makefile
+*.md

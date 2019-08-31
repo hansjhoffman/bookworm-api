@@ -1,5 +1,7 @@
 # Bookworm
 
+(https://codecov.io/gh/hansjhoffman/bookworm-api/branch/master/graph/badge.svg?token=)](https://codecov.io/gh/hansjhoffman/bookworm-api)
+
 REST and GraphQL API for Bookworm apps
 
 ## Docker builds

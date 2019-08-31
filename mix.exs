@@ -16,7 +16,8 @@ defmodule Bookworm.MixProject do
         coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
-        "coveralls.html": :test
+        "coveralls.html": :test,
+        "coveralls.json": :test
       ],
       releases: [
         bookworm: [

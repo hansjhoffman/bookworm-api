@@ -1,0 +1,21 @@
+version: v1.0
+name: Bookworm API
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Test & Build OTP Release
+    task:
+      secrets:
+        - name: codecov
+        - name: gcloud
+      prologue:
+        commands:
+          - sem-service start postgres
+          - createdb -U postgres -h 0.0.0.0 bookworm_test
+      jobs:
+      - name: code coverage
+        commands:
+          - checkout
+          - ./priv/scripts/ci-check.sh
