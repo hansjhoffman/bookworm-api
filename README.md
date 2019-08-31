@@ -1,6 +1,6 @@
 # Bookworm
 
-(https://codecov.io/gh/hansjhoffman/bookworm-api/branch/master/graph/badge.svg?token=)](https://codecov.io/gh/hansjhoffman/bookworm-api)
+[![codecov](https://codecov.io/gh/hansjhoffman/bookworm-api/branch/master/graph/badge.svg?token=5KvLCxDAN5)](https://codecov.io/gh/hansjhoffman/bookworm-api)
 
 REST and GraphQL API for Bookworm apps
 

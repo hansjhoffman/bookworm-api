@@ -35,3 +35,4 @@ blocks:
           - checkout
           - cache restore
           - sh ./priv/scripts/ci-check.sh
+          - bash <(curl -s https://codecov.io/bash)

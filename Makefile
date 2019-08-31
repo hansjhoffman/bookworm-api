@@ -56,4 +56,3 @@ push: ## Push the Docker image
 .PHONY: code-coverage
 code-coverage:
 	mix coveralls.json
-	bash <(curl -s https://codecov.io/bash)
