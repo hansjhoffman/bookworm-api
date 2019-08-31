@@ -14,8 +14,9 @@ blocks:
         commands:
           - sem-service start postgres
           - createdb -U postgres -h 0.0.0.0 bookworm_test
+          - psql -d bookworm_test -c "ALTER USER postgres WITH PASSWORD 'postgres';"
       jobs:
       - name: code coverage
         commands:
           - checkout
-          - ./priv/scripts/ci-check.sh
+          - sh ./priv/scripts/ci-check.sh
