@@ -53,10 +53,6 @@ push: ## Push the Docker image
 # Actions on targets
 # -------------------
 
-.PHONY: dependencies
-dependencies: ## Install dependencies required by the application
-	mix deps.get --force
-
 .PHONY: code-coverage
 code-coverage:
 	mix coveralls.json
