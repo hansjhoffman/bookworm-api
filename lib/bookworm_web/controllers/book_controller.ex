@@ -2,7 +2,6 @@ defmodule BookwormWeb.BookController do
   use BookwormWeb, :controller
 
   alias Bookworm.Books
-  alias Bookworm.Books.Book
 
   action_fallback BookwormWeb.FallbackController
 

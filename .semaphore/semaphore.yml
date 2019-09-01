@@ -1,0 +1,36 @@
+version: v1.0
+name: Bookworm API
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Install dependencies
+    task:
+      env_vars:
+        - name: MIX_ENV
+          value: test
+      jobs:
+        - name: mix and cache
+          commands:
+            - checkout
+            - mix local.hex --force
+            - mix local.rebar --force
+            - cache restore
+            - mix do deps.get, compile
+            - cache store
+
+  - name: Static Analysis
+    task:
+      secrets:
+        - name: codecov
+      jobs:
+      - name: code coverage
+        commands:
+          - checkout
+          - cache restore
+          - sem-service start postgres
+          - createdb -U postgres -h 0.0.0.0 bookworm_test
+          - psql -U postgres -h localhost -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+          - mix coveralls.json
+          - bash <(curl -s https://codecov.io/bash)
