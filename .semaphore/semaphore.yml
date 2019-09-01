@@ -19,20 +19,18 @@ blocks:
             - cache restore
             - mix do deps.get, compile
             - cache store
-  - name: Test & Build OTP Release
+
+  - name: Static Analysis
     task:
       secrets:
         - name: codecov
-        - name: gcloud
-      prologue:
-        commands:
-          - sem-service start postgres
-          - createdb -U postgres -h 0.0.0.0 bookworm_test
-          - psql -U postgres -h localhost -c "ALTER USER postgres WITH PASSWORD 'postgres';"
       jobs:
       - name: code coverage
         commands:
           - checkout
           - cache restore
-          - sh ./priv/scripts/ci-check.sh
+          - sem-service start postgres
+          - createdb -U postgres -h 0.0.0.0 bookworm_test
+          - psql -U postgres -h localhost -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+          - mix coveralls.json
           - bash <(curl -s https://codecov.io/bash)

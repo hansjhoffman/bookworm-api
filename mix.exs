@@ -4,7 +4,7 @@ defmodule Bookworm.MixProject do
   def project do
     [
       app: :bookworm,
-      version: "0.1.0",
+      version: "1.0.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -21,7 +21,8 @@ defmodule Bookworm.MixProject do
       ],
       releases: [
         bookworm: [
-          include_executables_for: [:unix]
+          include_executables_for: [:unix],
+          quiet: true
         ]
       ]
     ]
