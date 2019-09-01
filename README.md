@@ -4,14 +4,41 @@
 
 REST and GraphQL API for Bookworm apps
 
-## Docker builds
-`docker build --build-arg APP_NAME=$APP_NAME --build-arg APP_VSN=$APP_VSN -t "api:$APP_VSN" .`
-
-docker-compile build --pull
-docker run SECRET_KEY_BASE=`mix phx.gen.secret` bookworm:1.0.0
-
-## Release tasks
+## DO Setup
 ```
-bin/bookworm eval "Bookworm.ReleaseTasks.migrate"
-bin/bookworm eval "Bookworm.ReleaseTasks.seed"
+mkdir /opt/bookworm
+cp -R /home/bookworm/_build/prod/rel/bookworm/* /opt/bookworm
+chown -R bookworm:root /opt/bookworm
+ln -s /opt/bookworm/bin/bookworm /usr/local/bin/bookworm
+bookworm eval "Bookworm.ReleaseTasks.migrate"
+bookworm eval "Bookworm.ReleaseTasks.seed"
+service bookworm start
+```
+
+## Create systemd service
+```
+vim /etc/systemd/system/bookworm.service
+
+[Unit]
+Description=Bookworm API
+After=network.target
+
+[Service]
+Type=forking
+User=bookworm
+Group=bookworm
+WorkingDirectory=/opt/bookworm
+ExecStart=/opt/bookworm/bin/bookworm start
+ExecStop=/opt/bookworm/bin/bookworm stop
+PIDFile=/opt/bookworm/bookworm.pid
+Restart=on-failure
+RestartSec=5
+Environment=PORT=4000
+Environment=LANG=en_US.UTF-8
+Environment=PIDFILE=/opt/bookworm/bookworm.pid
+SyslogIdentifier=bookworm
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
 ```
