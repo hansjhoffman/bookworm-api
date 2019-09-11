@@ -9,9 +9,9 @@ defmodule BookwormWeb.Schema do
 
   object :book do
     @desc "Simple auto-increment database id"
-    field :id, :id
+    field :id, non_null(:id)
     @desc "Combined authors of the book"
-    field :authors, :string
+    field :authors, non_null(:string)
     @desc "A short summary of the book"
     field :description, :string
     @desc "The uri for a thumbnail"
@@ -19,12 +19,12 @@ defmodule BookwormWeb.Schema do
     @desc "A random number between 1 and 5"
     field :rating, :integer
     @desc "The title of the book"
-    field :title, :string
+    field :title, non_null(:string)
   end
 
   query do
     @desc "List all books"
-    field :list_books, list_of(:book) do
+    field :books, list_of(:book) do
       resolve(&Resolvers.Books.list_books/3)
     end
 

@@ -23,7 +23,7 @@ blocks:
   - name: Static Analysis
     task:
       secrets:
-        - name: codecov
+        - name: bookworm-api
       jobs:
       - name: code coverage
         commands:

@@ -3,7 +3,7 @@ defmodule BookwormWeb.Schema.Query.ListBooksTest do
 
   @query """
   {
-    listBooks {
+    books {
       id
       authors
       title
@@ -17,7 +17,7 @@ defmodule BookwormWeb.Schema.Query.ListBooksTest do
 
     expected = %{
       "data" => %{
-        "listBooks" => [
+        "books" => [
           %{"id" => "1", "authors" => "Ayn Rand", "title" => "Atlas Shrugged"}
         ]
       }
