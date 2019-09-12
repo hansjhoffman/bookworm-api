@@ -5,7 +5,7 @@ defmodule Bookworm.Books.Book do
   schema "books" do
     field :authors, :string
     field :description, :string
-    field :rating, :integer
+    field :rating, :integer, default: 0
     field :thumbnail, :string
     field :title, :string
 
@@ -15,8 +15,9 @@ defmodule Bookworm.Books.Book do
   @doc false
   def changeset(book, attrs) do
     book
-    |> cast(attrs, [:title, :description, :thumbnail, :rating, :authors])
+    |> cast(attrs, [:authors, :description, :rating, :thumbnail, :title])
     |> validate_required([:title, :description, :thumbnail, :rating, :authors])
+    |> validate_required([:authors, :title])
     |> unique_constraint(:title)
   end
 end
