@@ -15,7 +15,7 @@ defmodule BookwormWeb.Schema do
     @desc "A short summary of the book"
     field :description, :string
     @desc "The uri for a thumbnail"
-    field :thumbnail, :string
+    field :thumbnail, non_null(:string)
     @desc "A random rating between 0 and 5"
     field :rating, non_null(:integer)
     @desc "The title of the book"
